@@ -98,36 +98,67 @@
     
     
     ///＊＊＊＊＊动画组＊＊＊＊＊＊＊＊＊＊＊＊＊＊
-    CAKeyframeAnimation * pathAnimation = [CAKeyframeAnimation animation];
-    pathAnimation.keyPath = @"position";
-    //Create Path
-    CGMutablePathRef mutablepath = CGPathCreateMutable();
-    CGPathMoveToPoint(mutablepath, nil,view.layer.position.x, view.layer.position.y);
-    CGPathAddLineToPoint(mutablepath,nil,200,200);
-    CGPathAddArc(mutablepath, nil,200,200,100,0,M_PI,YES);
-    //set path
-    pathAnimation.path = mutablepath;
-    pathAnimation.rotationMode = kCAAnimationRotateAuto;
-    [view.layer addAnimation:pathAnimation forKey:@"PathAnimation"];
+    //方法1
+//    CAKeyframeAnimation * pathAnimation = [CAKeyframeAnimation animation];
+//    pathAnimation.keyPath = @"position";
+//    //Create Path
+//    CGMutablePathRef mutablepath = CGPathCreateMutable();
+//    CGPathMoveToPoint(mutablepath, nil,view.layer.position.x, view.layer.position.y);
+//    CGPathAddLineToPoint(mutablepath,nil,200,200);
+//    CGPathAddArc(mutablepath, nil,200,200,100,0,M_PI,YES);
+//    //set path
+//    pathAnimation.path = mutablepath;
+//    pathAnimation.rotationMode = kCAAnimationRotateAuto;
+//    [view.layer addAnimation:pathAnimation forKey:@"PathAnimation"];
+//    
+//    //透明度变化
+//    CAKeyframeAnimation * opacityAnimation = [CAKeyframeAnimation animation];
+//    opacityAnimation.keyPath = @"opacity";
+//    opacityAnimation.values = @[@(1.0),
+//                                @(0.5),
+//                                @(0.0),
+//                                @(0.5),
+//                                @(1.0)];
+//    opacityAnimation.calculationMode = kCAAnimationPaced;
+//    [view.layer addAnimation:opacityAnimation forKey:@"OpacityAnination"];
+//    //配置动画组
+//    CAAnimationGroup * animationGroup = [[CAAnimationGroup alloc] init];
+//    animationGroup.animations = @[pathAnimation,opacityAnimation];
+//    animationGroup.duration = 4.0;
+//    animationGroup.removedOnCompletion = NO;
+//    animationGroup.fillMode = kCAFillModeBackwards;
+//    [view.layer addAnimation:animationGroup forKey:@"GroupAnimation"];
     
-    //透明度变化
-    CAKeyframeAnimation * opacityAnimation = [CAKeyframeAnimation animation];
-    opacityAnimation.keyPath = @"opacity";
-    opacityAnimation.values = @[@(1.0),
-                                @(0.5),
-                                @(0.0),
-                                @(0.5),
-                                @(1.0)];
-    opacityAnimation.calculationMode = kCAAnimationPaced;
-    [view.layer addAnimation:opacityAnimation forKey:@"OpacityAnination"];
-    //配置动画组
-    CAAnimationGroup * animationGroup = [[CAAnimationGroup alloc] init];
-    animationGroup.animations = @[pathAnimation,opacityAnimation];
-    animationGroup.duration = 4.0;
-    animationGroup.removedOnCompletion = NO;
-    animationGroup.fillMode = kCAFillModeBackwards;
-    [view.layer addAnimation:animationGroup forKey:@"GroupAnimation"];
+    //方法2
+//    CGPoint oldCenter = view.center;
+//    CGAffineTransform oldtransform = view.transform;
+//    CGFloat oldAlpha = view.alpha;
+//    
+//    [UIView animateWithDuration:2.0 //动画持续时间
+//                          delay:0.0 //延迟多久执行
+//     
+//                        options: UIViewAnimationOptionCurveEaseInOut | UIViewAnimationOptionBeginFromCurrentState //执行选项：例如动画的过程描述，动画过程是否允许交互等等，比较多，更多参见文档
+//                     animations:^{
+//                         //执行的动画的block
+//                         view.center = view.center;
+//                         view.transform = CGAffineTransformConcat(CGAffineTransformMakeRotation(M_PI), CGAffineTransformMakeScale(2.0, 2.0));
+//                         view.alpha = 0.5;
+//                     }
+//                     completion:^(BOOL finished) {
+//                         //动画结束后的block
+//                         view.center = oldCenter;
+//                         view.transform = oldtransform;
+//                         view.alpha = oldAlpha;
+//                     }];
+//    
+    
     ///＊＊＊＊＊动画组＊＊＊＊＊＊＊＊＊＊＊＊＊＊
+    
+    
+    ///＊＊＊＊＊Dynamic Animation＊＊＊＊＊＊＊＊＊＊＊＊＊＊
+    
+
+    ///＊＊＊＊＊Dynamic Animation＊＊＊＊＊＊＊＊＊＊＊＊＊＊
     
     
     
